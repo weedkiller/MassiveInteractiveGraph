@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassiveInteractiveGraph.WebClient.Tests", "MassiveInteractiveGraph.WebClient.Tests\MassiveInteractiveGraph.WebClient.Tests.csproj", "{A713AD42-F978-400A-A8A3-42E2CBB1C366}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassiveInteractiveGraph.DataLoader", "MassiveInteractiveGraph.DataLoader\MassiveInteractiveGraph.DataLoader.csproj", "{8CB3CD06-A035-4D75-B50C-4AF34811260A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AF87DB84-23EB-469F-A6EB-152D0FC5F8E0} = {AF87DB84-23EB-469F-A6EB-152D0FC5F8E0}
+	EndProjectSection
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MassiveInteractiveGraph.DbScripts", "MassiveInteractiveGraph.DbScripts\MassiveInteractiveGraph.DbScripts.sqlproj", "{5DE1B995-187C-4A47-BF3D-C828C9B301B8}"
 EndProject

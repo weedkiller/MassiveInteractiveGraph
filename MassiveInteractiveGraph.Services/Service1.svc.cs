@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using MassiveInteractiveGraph.Services.Dal;
 
 namespace MassiveInteractiveGraph.Services
 {
@@ -12,9 +13,18 @@ namespace MassiveInteractiveGraph.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+        private readonly NodeDal _nodeDal;
+
+        public Service1(NodeDal nodeDal)
+        {
+            _nodeDal = nodeDal;
+        }
+
         public string GetData(int value)
         {
-            return string.Format("You entered: {0}", value);
+            var data = _nodeDal.GetAll();
+
+            return string.Format("Data count: {0}", data.Count());
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
