@@ -58,4 +58,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo.Node.sql" />
+    <Build Include="dbo.Link.sql" />
+  </ItemGroup>
 </Project>

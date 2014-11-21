@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +48,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="MassiveInteractiveGraphDbEntities.cs" />
+    <Compile Include="MassiveInteractiveGraphEntityDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MassiveInteractiveGraphEntityDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MassiveInteractiveGraphEntityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MetaData.cs" />
+    <Compile Include="Node.cs">
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="MassiveInteractiveGraphEntityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MassiveInteractiveGraphEntityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MassiveInteractiveGraphEntityDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>MassiveInteractiveGraphEntityDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MassiveInteractiveGraphEntityDataModel.edmx.diagram">
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="MassiveInteractiveGraphEntityDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>MassiveInteractiveGraphEntityDataModel.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

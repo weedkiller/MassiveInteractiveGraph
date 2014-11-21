@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Node]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Label] NVARCHAR(50)
+)

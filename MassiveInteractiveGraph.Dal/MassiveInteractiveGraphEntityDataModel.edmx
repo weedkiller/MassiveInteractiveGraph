@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MassiveInteractiveGraphDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\LIBOR\SOURCE\REPOS\MASSIVEINTERACTIVEGRAPH\MASSIVEINTERACTIVEGRAPH.SERVICES\APP_DATA\MASSIVEINTERACTIVEGRAPHDB.MDF.dbo.Link' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="Node1Id" />
+            <PropertyRef Name="Node2Id" />
+          </Key>
+          <Property Name="Node1Id" Type="int" Nullable="false" />
+          <Property Name="Node2Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Node">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Link_Node1Id">
+          <End Role="Node" Type="Self.Node" Multiplicity="1" />
+          <End Role="Link" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="Node1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Link_Node2Id">
+          <End Role="Node" Type="Self.Node" Multiplicity="1" />
+          <End Role="Link" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="Node2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MassiveInteractiveGraphDbModelStoreContainer">
+          <EntitySet Name="Node" EntityType="Self.Node" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Link" EntityType="Self.Link" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Link].[Node1Id] AS [Node1Id], 
+    [Link].[Node2Id] AS [Node2Id]
+    FROM [dbo].[Link] AS [Link]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Link_Node1Id" Association="Self.FK_Link_Node1Id">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="Link" EntitySet="Link" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Link_Node2Id" Association="Self.FK_Link_Node2Id">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="Link" EntitySet="Link" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MassiveInteractiveGraphDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Node">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdjacentNodes" Relationship="Self.Link" FromRole="Node1" ToRole="Node" />
+        </EntityType>
+        <Association Name="Link">
+          <End Role="Node" Type="Self.Node" Multiplicity="*" />
+          <End Role="Node1" Type="Self.Node" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MassiveInteractiveGraphDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Nodes" EntityType="Self.Node" />
+          <AssociationSet Name="Link" Association="Self.Link">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="Node1" EntitySet="Nodes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MassiveInteractiveGraphDbModelStoreContainer" CdmEntityContainer="MassiveInteractiveGraphDbEntities">
+          <EntitySetMapping Name="Nodes">
+            <EntityTypeMapping TypeName="MassiveInteractiveGraphDbModel.Node">
+              <MappingFragment StoreEntitySet="Node">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Link" TypeName="MassiveInteractiveGraphDbModel.Link" StoreEntitySet="Link">
+            <EndProperty Name="Node">
+              <ScalarProperty Name="Id" ColumnName="Node1Id" />
+            </EndProperty>
+            <EndProperty Name="Node1">
+              <ScalarProperty Name="Id" ColumnName="Node2Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
