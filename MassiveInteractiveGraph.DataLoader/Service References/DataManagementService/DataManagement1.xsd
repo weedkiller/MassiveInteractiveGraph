@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MassiveInteractiveGraph.Services" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MassiveInteractiveGraph.Services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfDataManagementNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataManagementNode" nillable="true" type="tns:DataManagementNode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataManagementNode" nillable="true" type="tns:ArrayOfDataManagementNode" />
+  <xs:complexType name="DataManagementNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataManagementNode" nillable="true" type="tns:DataManagementNode" />
+  <xs:complexType name="ArrayOfDataManagementLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataManagementLink" nillable="true" type="tns:DataManagementLink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataManagementLink" nillable="true" type="tns:ArrayOfDataManagementLink" />
+  <xs:complexType name="DataManagementLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id1" type="xs:int" />
+      <xs:element minOccurs="0" name="Id2" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataManagementLink" nillable="true" type="tns:DataManagementLink" />
+</xs:schema>
