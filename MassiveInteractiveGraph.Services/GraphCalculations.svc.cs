@@ -4,15 +4,31 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using MassiveInteractiveGraph.Services.Dal;
 
 namespace MassiveInteractiveGraph.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "GraphCalculations" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select GraphCalculations.svc or GraphCalculations.svc.cs at the Solution Explorer and start debugging.
     public class GraphCalculations : IGraphCalculations
     {
-        public void DoWork()
+        private readonly INodeDal _nodeDal;
+        private readonly ILinkDal _linkDal;
+
+        public GraphCalculations(INodeDal nodeDal, ILinkDal linkDal)
         {
+            _nodeDal = nodeDal;
+            _linkDal = linkDal;
+        }
+
+        public List<int> CalculateShortestRoute(int nodeId1, int nodeId2)
+        {
+            var toReturn = new List<int>();
+
+            //var nodes = _nodeDal.GetAll().ToList();
+            var links = _linkDal.GetAll().ToList();
+
+            //todo: implement
+
+            return toReturn;
         }
     }
 }

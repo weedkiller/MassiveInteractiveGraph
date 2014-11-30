@@ -7,11 +7,10 @@ using System.Text;
 
 namespace MassiveInteractiveGraph.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IGraphCalculations" in both code and config file together.
     [ServiceContract]
     public interface IGraphCalculations
     {
         [OperationContract]
-        void DoWork();
+        List<int> CalculateShortestRoute(int nodeId1, int nodeId2);
     }
 }

@@ -103,6 +103,8 @@
     <Compile Include="DataManagement.svc.cs">
       <DependentUpon>DataManagement.svc</DependentUpon>
     </Compile>
+    <Compile Include="DataManagementLink.cs" />
+    <Compile Include="DataManagementNode.cs" />
     <Compile Include="DataProvider.svc.cs">
       <DependentUpon>DataProvider.svc</DependentUpon>
     </Compile>
