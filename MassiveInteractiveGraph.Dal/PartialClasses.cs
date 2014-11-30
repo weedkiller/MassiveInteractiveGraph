@@ -9,9 +9,6 @@ namespace MassiveInteractiveGraph.Dal
         {
             target.Id = source.Id;
             target.Label = source.Label;
-
-            target.AdjacentNodes.Clear(); //this has to be here to keep the ef foreign key references intact
-            target.AdjacentNodes = source.AdjacentNodes;
         }
     }
 }

@@ -91,16 +91,27 @@
     <Content Include="App_Data\MassiveInteractiveGraphDb_log.ldf">
       <DependentUpon>MassiveInteractiveGraphDb.mdf</DependentUpon>
     </Content>
-    <Content Include="Service1.svc" />
+    <Content Include="DataManagement.svc" />
+    <Content Include="DataProvider.svc" />
+    <Content Include="GraphCalculations.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Dal\LinkDal.cs" />
     <Compile Include="Dal\NodeDal.cs" />
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="DataManagement.svc.cs">
+      <DependentUpon>DataManagement.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="DataProvider.svc.cs">
+      <DependentUpon>DataProvider.svc</DependentUpon>
+    </Compile>
+    <Compile Include="GraphCalculations.svc.cs">
+      <DependentUpon>GraphCalculations.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IDataManagement.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="IGraphCalculations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

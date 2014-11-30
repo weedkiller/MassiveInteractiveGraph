@@ -25,6 +25,7 @@ namespace MassiveInteractiveGraph.Dal
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Link> Links { get; set; }
         public virtual DbSet<Node> Nodes { get; set; }
     }
 }

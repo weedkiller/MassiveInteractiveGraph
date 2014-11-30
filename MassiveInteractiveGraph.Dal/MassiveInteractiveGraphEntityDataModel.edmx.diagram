@@ -5,8 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7a706bb315ac4134a0525c7e06d7755d" Name="Diagram1">
-        <EntityTypeShape EntityType="MassiveInteractiveGraphDbModel.Node" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="MassiveInteractiveGraphDbModel.Link" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MassiveInteractiveGraphDbModel.Link" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="MassiveInteractiveGraphDbModel.Node" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="MassiveInteractiveGraphDbModel.FK_Link_Node1Id" />
+        <AssociationConnector Association="MassiveInteractiveGraphDbModel.FK_Link_Node2Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,67 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Web;
 using log4net;
 using MassiveInteractiveGraph.Dal;
 
 namespace MassiveInteractiveGraph.Services.Dal
 {
-    public interface INodeDal
+    public interface ILinkDal
     {
-        IQueryable<Node> GetAll();
+        IQueryable<Link> GetAll();
 
-        Node Find(int id);
+        Link Find(int nodeId1, int nodeId2);
 
-        void AddOrEdit(Node node);
-        void Delete(int id);
+        void Add(Link link);
+        void Delete(int nodeId1, int nodeId2);
         void Save();
     }
 
-    public class NodeDal : INodeDal
+    public class LinkDal: ILinkDal
     {
         private readonly IMassiveInteractiveGraphDbEntities _db;
         private readonly ILog _log;
 
-        public NodeDal(IMassiveInteractiveGraphDbEntities db, ILog log)
+        public LinkDal(IMassiveInteractiveGraphDbEntities db, ILog log)
         {
             _db = db;
             _log = log;
         }
 
-        public IQueryable<Node> GetAll()
+        public IQueryable<Link> GetAll()
         {
-            return _db.Nodes;
+            return _db.Links;
         }
 
-        public Node Find(int id)
+        public Link Find(int nodeId1, int nodeId2)
         {
-            return _db.Nodes.Find(id);
+            return _db.Links.SingleOrDefault(l => l.Node1Id == nodeId1 && l.Node2Id == nodeId2);
         }
 
-        public void AddOrEdit(Node node)
+        public void Add(Link link)
         {
-            var existing = _db.Nodes.Find(node.Id);
+            var existing = Find(link.Node1Id, link.Node2Id);
             if (existing != null)
             {
-                //Node.CopyAllValues(node, existing);
-
-                _db.Entry(existing).State = EntityState.Modified;
+                throw new Exception("Link already exists");
             }
             else
             {
-                _db.Nodes.Add(node);
+                _db.Links.Add(link);
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int nodeId1, int nodeId2)
         {
-            var node = _db.Nodes.Find(id);
+            var link = Find(nodeId1, nodeId2);
 
-            if (node == null) throw new ArgumentException("Node can't be found", "id");
+            if (link == null) throw new ArgumentException("Link can't be found", "id");
 
-            _db.Nodes.Remove(node);
+            _db.Links.Remove(link);
         }
 
         public void Save()

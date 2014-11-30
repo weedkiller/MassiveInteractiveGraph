@@ -12,9 +12,10 @@ namespace MassiveInteractiveGraph.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class Node
+    public partial class Link
     {
         public int Id { get; set; }
-        public string Label { get; set; }
+        public int Node1Id { get; set; }
+        public int Node2Id { get; set; }
     }
 }

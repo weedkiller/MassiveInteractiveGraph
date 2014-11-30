@@ -73,6 +73,7 @@ namespace MassiveInteractiveGraph.Services.App_Start
             kernel.Bind<IMassiveInteractiveGraphDbEntities>().ToMethod(context => context.Kernel.Get<MassiveInteractiveGraphDbEntities>());
 
             kernel.Bind<INodeDal>().To<NodeDal>();
+            kernel.Bind<ILinkDal>().To<LinkDal>();
         }        
     }
 }

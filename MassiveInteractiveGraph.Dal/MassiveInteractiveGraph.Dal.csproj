@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Link.cs">
+      <DependentUpon>MassiveInteractiveGraphEntityDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MassiveInteractiveGraphDbEntities.cs" />
     <Compile Include="MassiveInteractiveGraphEntityDataModel.Context.cs">
       <AutoGen>True</AutoGen>

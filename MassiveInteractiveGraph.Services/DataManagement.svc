@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MassiveInteractiveGraph.Services.DataManagement" CodeBehind="DataManagement.svc.cs"  Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory"%>
