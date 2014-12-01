@@ -2,6 +2,7 @@ using log4net;
 using MassiveInteractiveGraph.Common;
 using MassiveInteractiveGraph.Dal;
 using MassiveInteractiveGraph.Services.Dal;
+using MassiveInteractiveGraph.Services.ShortestPathCalculations;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MassiveInteractiveGraph.Services.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MassiveInteractiveGraph.Services.App_Start.NinjectWebCommon), "Stop")]
@@ -74,6 +75,7 @@ namespace MassiveInteractiveGraph.Services.App_Start
 
             kernel.Bind<INodeDal>().To<NodeDal>();
             kernel.Bind<ILinkDal>().To<LinkDal>();
+            kernel.Bind<IShortestPathCalculator>().To<ShortestPathCalculator>();
         }        
     }
 }
