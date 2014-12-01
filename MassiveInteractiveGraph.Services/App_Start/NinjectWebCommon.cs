@@ -75,7 +75,7 @@ namespace MassiveInteractiveGraph.Services.App_Start
 
             kernel.Bind<INodeDal>().To<NodeDal>();
             kernel.Bind<ILinkDal>().To<LinkDal>();
-            kernel.Bind<IShortestPathCalculator>().To<ShortestPathCalculator>();
+            kernel.Bind<IShortestPathCalculator>().To<QuickGraphShortestPathCalculator>();
         }        
     }
 }
