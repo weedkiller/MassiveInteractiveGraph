@@ -12,7 +12,9 @@ namespace MassiveInteractiveGraph.Services.ShortestPathCalculations
 
         public void Init(IEnumerable<Tuple<int, int>> links)
         {
-            var edges = links.Select(l => new SEquatableEdge<int>(l.Item1, l.Item2));
+            var edges1 = links.Select(l => new SEquatableEdge<int>(l.Item1, l.Item2));
+            var edges2 = links.Select(l => new SEquatableEdge<int>(l.Item2, l.Item1));
+            var edges = edges1.Union(edges2);
             _graph = edges.ToAdjacencyGraph<int, SEquatableEdge<int>>(false);
         }
 

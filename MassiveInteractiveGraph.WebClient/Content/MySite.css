@@ -33,3 +33,11 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+#cy {
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}

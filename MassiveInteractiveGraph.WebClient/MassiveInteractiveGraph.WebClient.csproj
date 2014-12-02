@@ -75,6 +75,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.6.3\lib\net40\System.Spatial.dll</HintPath>
@@ -160,13 +162,26 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\ResourceUtilities.cs" />
+    <Compile Include="Models\CytoscapeGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\DataProviderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\GraphCalculationsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\GraphViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -216,9 +231,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\app\graphIndex.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\cytoscape.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
@@ -235,6 +252,26 @@
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
+    <None Include="Service References\DataProviderService\DataProvider.disco" />
+    <None Include="Service References\DataProviderService\configuration91.svcinfo" />
+    <None Include="Service References\DataProviderService\configuration.svcinfo" />
+    <Content Include="Service References\DataProviderService\MassiveInteractiveGraph.WebClient.DataProviderService.DataManagementLink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DataProviderService\MassiveInteractiveGraph.WebClient.DataProviderService.DataManagementNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DataProviderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\GraphCalculationsService\GraphCalculations.disco" />
+    <None Include="Service References\GraphCalculationsService\configuration91.svcinfo" />
+    <None Include="Service References\GraphCalculationsService\configuration.svcinfo" />
+    <None Include="Service References\GraphCalculationsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -264,15 +301,40 @@
     <Content Include="Views\Web.config" />
     <Content Include="packages.config" />
     <None Include="readme.txt" />
+    <Content Include="Views\Graph\Index.cshtml" />
+    <None Include="Service References\DataProviderService\DataProvider.wsdl" />
+    <None Include="Service References\DataProviderService\DataProvider.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataProviderService\DataProvider1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataProviderService\DataProvider2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphCalculationsService\GraphCalculations.wsdl" />
+    <None Include="Service References\GraphCalculationsService\GraphCalculations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphCalculationsService\GraphCalculations1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphCalculationsService\GraphCalculations2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassiveInteractiveGraph.Common\MassiveInteractiveGraph.Common.csproj">
       <Project>{BC7D346F-6FA7-4A51-A0C0-06B4F3E8DD3E}</Project>
       <Name>MassiveInteractiveGraph.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DataProviderService\" />
+    <WCFMetadataStorage Include="Service References\GraphCalculationsService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

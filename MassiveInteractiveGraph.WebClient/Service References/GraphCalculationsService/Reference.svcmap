@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7dfc6040-c3ae-4b10-90dd-662ec6be5891" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52253/GraphCalculations.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GraphCalculations.xsd" MetadataType="Schema" ID="60e966d7-001e-4098-bbe8-0dafb2dfe480" SourceId="1" SourceUrl="http://localhost:52253/GraphCalculations.svc?xsd=xsd1" />
+    <MetadataFile FileName="GraphCalculations1.xsd" MetadataType="Schema" ID="04028ee7-ff7c-4f68-aa87-60bc02a14b62" SourceId="1" SourceUrl="http://localhost:52253/GraphCalculations.svc?xsd=xsd0" />
+    <MetadataFile FileName="GraphCalculations.wsdl" MetadataType="Wsdl" ID="3c713b4c-92df-43f7-b0f7-9faaac55c2b4" SourceId="1" SourceUrl="http://localhost:52253/GraphCalculations.svc?wsdl" />
+    <MetadataFile FileName="GraphCalculations2.xsd" MetadataType="Schema" ID="321a6073-68b8-402e-a423-60105af2de41" SourceId="1" SourceUrl="http://localhost:52253/GraphCalculations.svc?xsd=xsd2" />
+    <MetadataFile FileName="GraphCalculations.disco" MetadataType="Disco" ID="f8e887f5-3674-4023-b1c2-1a5a96b01f8b" SourceId="1" SourceUrl="http://localhost:52253/GraphCalculations.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

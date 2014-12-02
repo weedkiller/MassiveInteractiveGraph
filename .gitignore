@@ -181,3 +181,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/MassiveInteractiveGraph.WebClient/App_Logs

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e0e22e8e-624f-4c03-a3ec-d483014d15b6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52253/DataProvider.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataProvider.xsd" MetadataType="Schema" ID="3b6d1a59-e241-4561-8422-6f97849be959" SourceId="1" SourceUrl="http://localhost:52253/DataProvider.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataProvider.wsdl" MetadataType="Wsdl" ID="3976e669-bd26-4866-8815-25af54b3f343" SourceId="1" SourceUrl="http://localhost:52253/DataProvider.svc?wsdl" />
+    <MetadataFile FileName="DataProvider1.xsd" MetadataType="Schema" ID="e2c9e60b-b3bd-4db5-866c-4cdaa068a505" SourceId="1" SourceUrl="http://localhost:52253/DataProvider.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataProvider2.xsd" MetadataType="Schema" ID="d77e3604-e2de-4f82-ae9a-f251679e6780" SourceId="1" SourceUrl="http://localhost:52253/DataProvider.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataProvider.disco" MetadataType="Disco" ID="28902f12-50a1-4216-8371-31b050c95add" SourceId="1" SourceUrl="http://localhost:52253/DataProvider.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

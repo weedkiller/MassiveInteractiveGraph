@@ -1,0 +1,16 @@
+﻿@model GraphViewModel
+
+@{
+    ViewBag.Title = "Graph";
+}
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/cytoscape.min.js").AppendHash(Request)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/app/graphIndex.js").AppendHash(Request)" type="text/javascript"></script>
+}
+
+@Html.Hidden("serializedGraph", Model.SerializedGraph)
+
+<button id="findPath">Find path</button>
+<div id="cy"></div>

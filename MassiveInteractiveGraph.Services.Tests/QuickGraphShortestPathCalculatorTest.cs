@@ -40,7 +40,6 @@ namespace MassiveInteractiveGraph.Services.Tests
         [TestMethod]
         public void CalculateShortestPathTest()
         {
-
             var result1 = _spc.CalculateShortestPath(1, 3);
             Assert.IsNotNull(result1);
             CollectionAssert.AreEqual(new[] { 1, 3 }, result1.ToArray());
@@ -58,7 +57,7 @@ namespace MassiveInteractiveGraph.Services.Tests
             
             var result5 = _spc.CalculateShortestPath(1, 6);
             Assert.IsNotNull(result5);
-            CollectionAssert.AreEqual(new[] { 1, 3, 5, 7, 6 }, result5.ToArray());
+            CollectionAssert.AreEqual(new[] { 1, 2, 10, 6 }, result5.ToArray());
             
             var result6 = _spc.CalculateShortestPath(1, 7);
             Assert.IsNotNull(result6);
@@ -75,6 +74,14 @@ namespace MassiveInteractiveGraph.Services.Tests
             var result9 = _spc.CalculateShortestPath(1, 10);
             Assert.IsNotNull(result9);
             CollectionAssert.AreEqual(new[] { 1, 2, 10 }, result9.ToArray());
+
+            var result1Reverted = _spc.CalculateShortestPath(3, 1);
+            Assert.IsNotNull(result1Reverted);
+            CollectionAssert.AreEqual(new[] { 3, 1 }, result1Reverted.ToArray());
+
+            var result9Reverted = _spc.CalculateShortestPath(10, 1);
+            Assert.IsNotNull(result9Reverted);
+            CollectionAssert.AreEqual(new[] { 10, 2, 1 }, result9Reverted.ToArray());
         }
     }
 }
