@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
@@ -55,8 +63,13 @@
   <ItemGroup>
     <Compile Include="QuickGraphShortestPathCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NodeDalTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MassiveInteractiveGraph.Dal\MassiveInteractiveGraph.Dal.csproj">
+      <Project>{e381e83a-040e-49d4-a162-acef3da5b7ad}</Project>
+      <Name>MassiveInteractiveGraph.Dal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MassiveInteractiveGraph.Services\MassiveInteractiveGraph.Services.csproj">
       <Project>{AF87DB84-23EB-469F-A6EB-152D0FC5F8E0}</Project>
       <Name>MassiveInteractiveGraph.Services</Name>

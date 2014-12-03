@@ -1,7 +1,13 @@
 ﻿$(function () {
 
-    $("#findPath").button().click(function () {
+    var findPathButton = $("#findPath");
+    var userMessage = $("#userMessage");
+    
+    userMessage.html("you need to select 2 nodes");
 
+    findPathButton.button("disable");
+    findPathButton.click(function (event) {
+        event.preventDefault();
         var selectedNodes = cy.$(".highlightedNode");
         if (selectedNodes.length == 2) {
             var sourceId = selectedNodes[0].data("id");
@@ -14,18 +20,28 @@
 
             $.getJSON("Graph/FindPath", query
             ).success(function (data, textStatus) {
-                for (var i = 0; i < data.length - 1; i++) {
-                    var id1 = data[i];
-                    var id2 = data[i + 1];
-                    cy.$("#link_" + id1 + "_" + id2).addClass('highlightedEdge');
-                    cy.$("#link_" + id2 + "_" + id1).addClass('highlightedEdge');
+
+                if (data.length == 0) {
+                    alert("no route found");
+                } else {
+
+                    for (var i = 0; i < data.length - 1; i++) {
+                        var id1 = data[i];
+                        var id2 = data[i + 1];
+                        cy.$("#link_" + id1 + "_" + id2).addClass('highlightedEdge');
+                        cy.$("#link_" + id2 + "_" + id1).addClass('highlightedEdge');
+                    }
+                    $.each(data, function (i, item) {
+                        cy.$("#node_" + item).addClass('highlightedNode');
+                    });
                 }
-                $.each(data, function (i, item) {
-                    cy.$("#node_" + item).addClass('highlightedNode');
-                });
+
+                userMessage.html("route found");
 
             }).error(function (data, textStatus) {
-                var test = 0;
+
+                userMessage.html("");
+                alert("unexpected server error");
 
             });
 
@@ -98,6 +114,8 @@
 
     cy.on('tap', 'node', function (event) {
 
+        userMessage.html("");
+
         if (cy.$(".highlightedEdge").length > 0) {
             cy.$(".highlightedEdge").removeClass('highlightedEdge');
             cy.$(".highlightedNode").removeClass('highlightedNode');
@@ -110,10 +128,14 @@
         var node = event.cyTarget;
         cy.$("#" + node.id()).addClass('highlightedNode');
 
+        if (cy.$(".highlightedNode").length == 2) {
+            findPathButton.button("enable");
+        } else {
+            findPathButton.button("disable");
+        }
+
+        if (cy.$(".highlightedNode").length == 1) {
+            userMessage.html("you need to select 2 nodes");
+        }
     });
-
-
-    //todo: add classes to elements
-    //cy.$('#j').select();
-    //cy.$('#j, #e').addClass('highlighted');
 });

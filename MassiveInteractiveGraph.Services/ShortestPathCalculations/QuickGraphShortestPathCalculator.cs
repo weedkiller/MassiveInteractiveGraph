@@ -32,17 +32,23 @@ namespace MassiveInteractiveGraph.Services.ShortestPathCalculations
             
             Func<SEquatableEdge<int>, double> edgeCost = e => 1;
 
-            TryFunc<int, IEnumerable<SEquatableEdge<int>>> tryGetPaths = _graph.ShortestPathsDijkstra(edgeCost, source);
-
+            bool pathFound = false;
             IEnumerable<SEquatableEdge<int>> path;
-            var pathFound = tryGetPaths(target, out path);
-
-            if (pathFound)
+            try
             {
-                var vertices = path.Select(p => new Tuple<int, int>(p.Source, p.Target)).ToList();
-                
-                toReturn = vertices.Select(v => v.Item1).ToList();
-                toReturn.Add(vertices.Last().Item2);
+                var tryGetPaths = _graph.ShortestPathsDijkstra(edgeCost, source);
+                pathFound = tryGetPaths(target, out path);
+                if (pathFound)
+                {
+                    var vertices = path.Select(p => new Tuple<int, int>(p.Source, p.Target)).ToList();
+
+                    toReturn = vertices.Select(v => v.Item1).ToList();
+                    toReturn.Add(vertices.Last().Item2);
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
 
             return toReturn;

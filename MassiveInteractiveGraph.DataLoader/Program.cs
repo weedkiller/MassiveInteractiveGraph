@@ -61,10 +61,13 @@ namespace MassiveInteractiveGraph.DataLoader
 
                 service.AddNodes(nodesToAdd);
                 service.AddLinks(linksToAdd);
+
+                service.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                service.Abort();
             }
         }
     }

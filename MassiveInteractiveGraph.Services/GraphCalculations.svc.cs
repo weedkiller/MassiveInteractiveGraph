@@ -23,10 +23,15 @@ namespace MassiveInteractiveGraph.Services
 
         public List<int> CalculateShortestRoute(int nodeId1, int nodeId2)
         {
+            var toReturn = new List<int>();
             var links = _linkDal.GetAll().ToList();
 
             _calculator.Init(links.Select(l => new Tuple<int, int>(l.Node1Id, l.Node2Id)));
-            var toReturn = _calculator.CalculateShortestPath(nodeId1, nodeId2).ToList();
+            var path = _calculator.CalculateShortestPath(nodeId1, nodeId2);
+            if (path != null)
+            {
+                toReturn = path.ToList();
+            }
 
             return toReturn;
         }
