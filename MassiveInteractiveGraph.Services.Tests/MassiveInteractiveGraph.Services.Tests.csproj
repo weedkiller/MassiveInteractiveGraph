@@ -61,9 +61,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MyDijkstraShortestPathCalculatorTest.cs" />
     <Compile Include="QuickGraphShortestPathCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NodeDalTest.cs" />
+    <Compile Include="ShortestPathCalculatorTestUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassiveInteractiveGraph.Dal\MassiveInteractiveGraph.Dal.csproj">

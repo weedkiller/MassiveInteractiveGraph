@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using MassiveInteractiveGraph.Services.ShortestPathCalculations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace MassiveInteractiveGraph.Services.Tests
 {
     [TestClass]
-    public class QuickGraphShortestPathCalculatorTest
+    public class MyDijkstraShortestPathCalculatorTest
     {
-        QuickGraphShortestPathCalculator _spc;
+        MyDijkstraShortestPathCalculator _spc;
 
         [TestInitialize]
         public void Init()
         {
-            _spc = new QuickGraphShortestPathCalculator();
+            _spc = new MyDijkstraShortestPathCalculator();
             var links = ShortestPathCalculatorTestUtils.GetLinks();
-            _spc.Init(links.Select(l => new Tuple<int, int>(l.Item1, l.Item2)));
+            _spc.Init(links.Select(l=>new Tuple<int, int>(l.Item1, l.Item2)));
         }
 
         [TestMethod]
